@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./mdproduction.min.css">
+</head>
+
+<body>
+    <!-- 顶部计时器 -->
+    <div style="position: fixed;top:0;z-index: 999;width: 100%">
+        <p id="jsq" style="text-align: center"></p>
+    </div>
+    <!-- 场景1 -->
+    <div class="scene1">
+        <div class="gd">
+            <span>G</span>
+            <span>D</span>
+        </div>
+        <div class="mdmotion">
+            <span>M</span>
+            <span>a</span>
+            <span>t</span>
+            <span>e</span>
+            <span>r</span>
+            <span>i</span>
+            <span>a</span>
+            <span>l</span>
+            <span>&nbsp;</span>
+            <span>D</span>
+            <span>e</span>
+            <span>s</span>
+            <span>i</span>
+            <span>g</span>
+            <span>n</span>
+        </div>
+    </div>
+    <!-- 场景2 -->
+    <div class="scene2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+    </div>
+    <!-- 场景3 -->
+    <div class="scene3">
+        <div class="circle4">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- 场景4 -->
+    <div class="scene4">
+        <div class="ball"></div>
+        <div class="baffle"></div>
+    </div>
+
+    <!-- 场景5 -->
+    <div class="scene5">
+        <div class="circle5">
+            <div class="axis">
+                <div class="circle51"></div>
+                <div class="circle52"></div>
+            </div>
+            <div class="circle6"></div>
+        </div>
+    </div>
+    <!-- 场景6 -->
+    <span id="scene6tip">点击电话继续动画</span>
+    <div class="scene6 flexCenter">
+        <div class="outercircle flexCenter">
+            <div class="dial flexCenter">
+                <div class="innercircle flexCenter">
+                    <img src="./_ionicons_svg_md-call.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 场景7 -->
+    <div class="scene7">
+        <div class="r1"></div>
+        <div class="r2"></div>
+        <div class="r3"></div>
+        <div class="r4"></div>
+        <div class="r5"></div>
+    </div>
+    <!-- 场景8 -->
+    <div class="scene8">
+        <div class="indicator"></div>
+        <div class="progressbar"></div>
+    </div>
+    <!-- 场景9 -->
+    <div class="scene9">
+
+    </div>
+
+    <!-- 场景10 -->
+    <div class="scene10">
+        <div class="leftbox">
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+        </div>
+        <div class="rightbox">
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+            </div>
+        </div>
+        <div class="circle7">
+            <div class="c8axis">
+                <div class="circle8"></div>
+            </div>
+            <div class="circleProgress_wrapper">
+                <div class="wrapper right">
+                    <div class="circleProgress rightcircle"></div>
+                </div>
+                <div class="wrapper left">
+                    <div class="circleProgress leftcircle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scene11">
+        <div class="ballraise">
+        </div>
+
+        <div class="topmask"></div>
+        <div class="bottommask"></div>
+        <span id="endstr"></span>
+    </div>
+
+
+</body>
+
+
+<script src="./jquery-3.1.1.min.js"></script>
+<script>
+    var end=false;
+    var ms = 0, s = 0;
+    $(function () {
+        var timerShow = setInterval(function () {
+            // $('#jsq').html(Date(Date.now().toLocaleString()));
+            $('#jsq').html(s + ':' + ms);
+            ms += 1;
+            if (ms > 9) {
+                s++;
+                ms = 0;
+            } else if (end) {
+                clearInterval(timerShow);
+            }
+        }, 100)
+    });
+</script>
+<script src="./main.min.js"></script>
+
+</html>

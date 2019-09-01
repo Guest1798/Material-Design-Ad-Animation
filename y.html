@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media screen and (min-width: 1280px) {
+            html {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (min-width: 1366px) {
+            html {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (min-width: 1920px) {
+            html {
+                font-size: 24px;
+            }
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background: rgb(255, 255, 255);
+            overflow: hidden;
+        }
+
+        .scene {
+            width: 100%;
+            height: 100%;
+            background: rgb(145, 145, 145);
+            position: relative;
+        }
+
+        .scene .panelbox {
+            width: 50%;
+            height: 100%;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+
+        .scene2 {
+            width: 100%;
+            height: 100%;
+            background: rgba(223, 223, 223, 0);
+            position: absolute;
+            z-index: 999;
+            top: 0%;
+        }
+
+        .scene .panelbox .panel {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            position: absolute;
+        }
+
+        .scene .panel header {
+            height: 30%;
+            background: rgb(20, 20, 172);
+        }
+
+        .scene .panel footer {
+            height: 70%;
+            background: rgb(255, 255, 255);
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .scene .panel footer .bar {
+            width: 80%;
+            height: 10px;
+            background: rgb(211, 211, 211);
+            border-radius: 5px;
+            margin: 200px auto;
+        }
+
+        footer .bar .barprogress {
+            border-radius: 5px;
+            width: 0%;
+            height: 10px;
+            position: relative;
+            background: rgb(27, 204, 72);
+        }
+
+        footer .bar .barprogress .bardot {
+            position: absolute;
+            right: 0px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgb(27, 204, 72);
+            transform: translate(10px, -10px);
+        }
+
+        @keyframes headerAni {
+            from {}
+
+            to {
+                height: 100%;
+            }
+        }
+
+        .panel2 {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            height: 100%;
+            background: rgb(15, 227, 255);
+        }
+
+        .leftbox {
+            width: 0%;
+            height: 100%;
+            background: #fff;
+            position: absolute;
+            left: 0%;
+            overflow: hidden;
+        }
+
+        .rightbox {
+            width: 0%;
+            height: 100%;
+            background: #fff;
+            position: absolute;
+            right: 0%;
+            overflow: hidden;
+        }
+
+        .leftpan {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            left: 0;
+            perspective: 200;
+        }
+
+        .rightpan {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            left: 50%;
+            perspective: 200;
+        }
+
+        .leftpan div {
+            position: absolute;
+            right: 0;
+            width: 0%;
+            height: 5%;
+            z-index: 99;
+        }
+
+        .rightpan div {
+            position: absolute;
+            left: 0;
+            width: 0%;
+            height: 5%;
+            z-index: 99;
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+        }
+
+        @keyframes tolong {
+            from {
+                width: 0%
+            }
+
+            to {
+                width: 100%
+            }
+        }
+        @keyframes divRotate3D {
+            from{
+                transform: rotateX(0deg)
+            }
+            to{
+                transform: rotateX(360deg)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scene">
+        <div class="panelbox">
+            <div class="panel">
+                <header></header>
+                <footer>
+                    <div class="bar">
+                        <div class="barprogress">
+                            <div class="bardot"></div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+            <div class="panel2">
+
+            </div>
+        </div>
+        <div class="leftbox"></div>
+        <div class="rightbox"></div>
+    </div>
+    <div class="scene2">
+        <div class="leftpan"></div>
+        <div class="rightpan"></div>
+    </div>
+
+</body>
+<script src="./jquery-3.1.1.min.js"></script>
+<script>
+    var wh = window.innerHeight;
+    var ww = window.innerWidth;
+
+    function randomColor() {
+        return 'rgb(' + Math.floor(Math.random() * 255)
+            + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ')';
+    }
+
+    scene1();
+    function scene1() {
+        var i = 0;
+        var t1 = setInterval(function () {
+            $('.barprogress').css('width', i + '%');
+            i++;
+            if (i > 100) {
+                clearInterval(t1);
+                step2();
+            }
+        }, 20)
+    }
+    function step2() {
+        $('header').animate({
+            height: '100%'
+        }, 700, function () {
+            step3();
+        })
+    }
+    function step3() {
+        $('.leftbox').animate({
+            width: '50%'
+        }, 600);
+        $('.rightbox').animate({
+            width: '50%'
+        }, 600);
+        $('.panel2').animate({
+            top: '0px'
+        }, 600, function () {
+            scene2();
+        })
+    }
+    function scene2() {
+        for (var i = 0; i < 20; i++) {
+            var mcbgcolor = randomColor();
+            $div = $('<div style="background:' + mcbgcolor + ';top:' + i * 5 + '%;animation:tolong 1.2s ease ' + i * 0.1 + 's forwards;"></div>');
+            $('.leftpan,.rightpan').append($div);
+        }
+
+        $('.leftpan>div:last').on('animationend webkitAnimationEnd', function () {
+            divRotate3D();
+        })
+    }
+    function divRotate3D() {
+        
+    }
+</script>
+
+</html>
